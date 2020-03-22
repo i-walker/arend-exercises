@@ -1,6 +1,6 @@
 # arend-exercises
 
-This repo aggregates notes, exercise implementations reformulated in Arend[https://arend-lang.github.io] from the internet, papers, lectures and courses regarding various topics from HoTT, effect systems, program verification, compilers and many more.
+This repo aggregates notes, exercise implementations reformulated in [Arend](https://arend-lang.github.io) from the internet, papers, lectures and courses regarding various topics from HoTT, effect systems, program verification, compilers and many more.
 It comes from an effort to openly learn and share.
 
 ### Community
