@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0584a6-0079-429a-b250-97363d10e133" name="Default Changelist" comment="Revert &quot;cleanUp&quot;&#10;&#10;This reverts commit bf9e2ab5">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="8d0584a6-0079-429a-b250-97363d10e133" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arend.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/arend.yaml" afterDir="false" />
     </list>
     <list id="2510db86-4ffd-4d88-9425-70ed4e571f67" name="Revert &quot;fine&quot;" comment="Revert &quot;fine&quot;&#10;&#10;This reverts commit b0080c77" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +30,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="dev" />
+                    <option name="lastUsedInstant" value="1584900565" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
                     <option name="lastUsedInstant" value="1584900103" />
@@ -155,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584900175634</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="test">
+      <created>1584900702908</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584900702908</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,13 +180,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sm" />
     <MESSAGE value="Revert &quot;cleanUp&quot;&#10;&#10;This reverts commit bf9e2ab5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;cleanUp&quot;&#10;&#10;This reverts commit bf9e2ab5" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="187" y="0" key="CommitChangelistDialog2" timestamp="1584900643671">
+    <state x="187" y="0" key="CommitChangelistDialog2" timestamp="1584900702802">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="187" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584900643671" />
+    <state x="187" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584900702802" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1584900321140">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -211,9 +220,13 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="256" y="0" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1584900543620" />
-    <state x="100" y="100" width="1080" height="600" key="ShowDiffWithBranchDialog" timestamp="1584900321140">
+    <state x="100" y="100" width="1080" height="600" key="ShowDiffWithBranchDialog" timestamp="1584900801819">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="100" y="100" width="1080" height="600" key="ShowDiffWithBranchDialog/0.0.1280.800@0.0.1280.800" timestamp="1584900321140" />
+    <state x="100" y="100" width="1080" height="600" key="ShowDiffWithBranchDialog/0.0.1280.800@0.0.1280.800" timestamp="1584900801819" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1584900717647">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1584900717647" />
   </component>
 </project>
