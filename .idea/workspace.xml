@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0584a6-0079-429a-b250-97363d10e133" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/arend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/papers/compilers/fv/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/papers/itrees/Itree.ard" afterDir="false" />
+    <list default="true" id="8d0584a6-0079-429a-b250-97363d10e133" name="Default Changelist" comment="fine">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arend.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/arend.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/part1/BasicsEx.ard" beforeDir="false" afterPath="$PROJECT_DIR$/src/arend/part1/BasicsEx.ard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/part1/ProofsEx.ard" beforeDir="false" afterPath="$PROJECT_DIR$/src/arend/part1/ProofsEx.ard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +14,37 @@
     <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="local" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1584898056" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="local" />
+                    <option name="lastUsedInstant" value="1584897968" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -79,8 +103,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Arend Typecheck.Typecheck t4" />
-        <item itemvalue="Arend Typecheck.Typecheck f1" />
         <item itemvalue="Arend Typecheck.Typecheck f2" />
+        <item itemvalue="Arend Typecheck.Typecheck f1" />
+        <item itemvalue="Arend Typecheck.Typecheck t4" />
+        <item itemvalue="Arend Typecheck.Typecheck f1" />
       </list>
     </recent_temporary>
   </component>
@@ -102,13 +128,25 @@
       <option name="presentableId" value="Default" />
       <updated>1584894344860</updated>
     </task>
+    <task id="LOCAL-00001" summary="fine">
+      <created>1584897649811</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584897649811</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fine" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="187" y="2" key="CommitChangelistDialog2" timestamp="1584896984217">
+    <state x="187" y="2" key="CommitChangelistDialog2" timestamp="1584898273182">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="187" y="2" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584896984217" />
+    <state x="187" y="2" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584898273182" />
     <state width="598" height="205" key="GridCell.Tab.0.bottom" timestamp="1584894701445">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -137,5 +175,9 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="256" y="0" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1584895627236" />
+    <state x="480" y="140" key="Vcs.Push.Dialog.v2" timestamp="1584897987180">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="480" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1584897987180" />
   </component>
 </project>
