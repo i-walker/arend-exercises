@@ -184,10 +184,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="187" y="0" key="CommitChangelistDialog2" timestamp="1584900702802">
+    <state x="187" y="0" key="CommitChangelistDialog2" timestamp="1584900838512">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="187" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584900702802" />
+    <state x="187" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584900838512" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1584900321140">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -224,9 +224,13 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="100" y="100" width="1080" height="600" key="ShowDiffWithBranchDialog/0.0.1280.800@0.0.1280.800" timestamp="1584900801819" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1584900717647">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1584900850157">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1584900717647" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1584900850157" />
+    <state x="386" y="120" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584900883222">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="386" y="120" key="git4idea.branch.GitSmartOperationDialog/0.0.1280.800@0.0.1280.800" timestamp="1584900883222" />
   </component>
 </project>
