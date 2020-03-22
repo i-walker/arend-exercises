@@ -1,0 +1,1 @@
+This directory contains exercises from Arend tutorial. 

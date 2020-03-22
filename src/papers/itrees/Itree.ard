@@ -1,0 +1,24 @@
+{-
+  - This module tries to portray an intuition into interaction trees most of the explainations are based or directly ported from
+  - the paper: `Interaction Trees - Representing Recursive and Impure Programs in Coq` https://arxiv.org/abs/1906.00046
+  - Have fun reading :)
+  - Thanks to the authors and associated contributors for their great contribution, work and oss library https://github.com/DeepSpec/InteractionTrees.
+-}
+
+\module SimplifiedITree \where {
+
+  {-
+  - Interaction trees represent computations that interact with an external environment.
+  - -}
+  \data Itree
+    (E : \Type -> \Type)                           --
+    (R : \Type)                                    --
+    -- constructors
+    | ret (r : R)                                  -- computation terminating with value r of type R
+    | tau (t : Itree E R)                          -- "silent" tau transition with a child tree t
+    | vis {A : \Type}
+          (e : E A)
+          (k : A -> Itree E R)
+}
+
+

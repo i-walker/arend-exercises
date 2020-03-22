@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d0584a6-0079-429a-b250-97363d10e133" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/papers/compilers/fv/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/papers/itrees/Itree.ard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arend.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/arend.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/part1/BasicsEx.ard" beforeDir="false" afterPath="$PROJECT_DIR$/src/arend/part1/BasicsEx.ard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/part1/ProofsEx.ard" beforeDir="false" afterPath="$PROJECT_DIR$/src/arend/part1/ProofsEx.ard" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ZUWqbk5oB9iYqRg9F7ijIkC8yt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="PsiViewer.ProjectComponent">
+    <option name="HIGHLIGHT" value="false" />
+    <option name="FILTER_WHITESPACE" value="false" />
+    <option name="SHOW_PROPERTIES" value="true" />
+    <option name="SPLIT_DIVIDER_POSITION" value="300" />
+    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="RunManager" selected="Arend Typecheck.Typecheck t4">
+    <configuration name="Typecheck f1" type="TypecheckRunConfiguration" factoryName="Arend Typecheck" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="arend-exercises" />
+      <option name="allowRunningInParallel" value="false" />
+      <parameters>
+        <option name="definitionFullName" value="f1" />
+        <option name="library" value="arend-exercises" />
+        <option name="modulePath" value="arend.part1.BasicsEx" />
+      </parameters>
+      <method v="2" />
+    </configuration>
+    <configuration name="Typecheck f2" type="TypecheckRunConfiguration" factoryName="Arend Typecheck" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="arend-exercises" />
+      <option name="allowRunningInParallel" value="false" />
+      <parameters>
+        <option name="definitionFullName" value="f2" />
+        <option name="library" value="arend-exercises" />
+        <option name="modulePath" value="arend.part1.BasicsEx" />
+      </parameters>
+      <method v="2" />
+    </configuration>
+    <configuration name="Typecheck t4" type="TypecheckRunConfiguration" factoryName="Arend Typecheck" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="arend-exercises" />
+      <option name="allowRunningInParallel" value="false" />
+      <parameters>
+        <option name="definitionFullName" value="t4" />
+        <option name="library" value="arend-exercises" />
+        <option name="modulePath" value="arend.part1.ProofsEx" />
+      </parameters>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Arend Typecheck.Typecheck t4" />
+        <item itemvalue="Arend Typecheck.Typecheck f1" />
+        <item itemvalue="Arend Typecheck.Typecheck f2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../Arrow_with_Access/intellij-haskell" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d0584a6-0079-429a-b250-97363d10e133" name="Default Changelist" comment="" />
+      <created>1584894344860</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584894344860</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="187" y="2" key="CommitChangelistDialog2" timestamp="1584896984217">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="187" y="2" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1584896984217" />
+    <state width="598" height="205" key="GridCell.Tab.0.bottom" timestamp="1584894701445">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="598" height="205" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1584894701445" />
+    <state width="598" height="205" key="GridCell.Tab.0.center" timestamp="1584894701444">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="598" height="205" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1584894701444" />
+    <state width="598" height="205" key="GridCell.Tab.0.left" timestamp="1584894701443">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="598" height="205" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1584894701443" />
+    <state width="598" height="205" key="GridCell.Tab.0.right" timestamp="1584894701445">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="598" height="205" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1584894701445" />
+    <state x="456" y="150" key="IDE.errors.dialog" timestamp="1584895334635">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="456" y="150" key="IDE.errors.dialog/0.0.1280.800@0.0.1280.800" timestamp="1584895334635" />
+    <state x="539" y="101" key="NewModule_or_Project.wizard" timestamp="1584894969878">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="539" y="101" key="NewModule_or_Project.wizard/0.0.1280.800@0.0.1280.800" timestamp="1584894969878" />
+    <state x="256" y="0" key="SettingsEditor" timestamp="1584895627236">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="256" y="0" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1584895627236" />
+  </component>
+</project>
