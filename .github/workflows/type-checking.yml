@@ -23,7 +23,7 @@ jobs:
           java -jar arend.jar
           curl -O https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
       - name: Type check code
-          env:
+        env:
             JAVA_OPTS: -Xms512m -Xmx1024m
-          run: |
+        run: |
             java -jar arend.jar -L/. arend.yaml
