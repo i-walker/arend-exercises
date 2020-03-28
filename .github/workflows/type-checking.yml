@@ -22,6 +22,7 @@ jobs:
           wget https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
           java -jar arend.jar
           wget https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
+          unzip arend-lib.zip
       - name: Type check code
         env:
             JAVA_OPTS: -Xms512m -Xmx1024m
