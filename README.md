@@ -10,6 +10,7 @@ It comes from an effort to openly learn and share.
 
 ### Articles and links about Arend, Formal verification other learning resources
 - [Arend - HoTT-based dependent type language (part 1)](https://geeks-world.github.io/articles/469569/index.html)
+- [Arend Tutorial Part1](https://github.com/arend-lang/tutorial-code)
 - [Learning Resources for Formal verification](https://avigad.github.io/formal_methods_in_education/)
 - [Arend reorg](https://github.com/JetBrains/Arend/pull/177)
 - [HoTT.org](https://homotopytypetheory.org)
