@@ -8,10 +8,19 @@ It comes from an effort to openly learn and share.
 - [Telegram](https://t.me/joinchat/GPwwsREtctsqEVs6gPeLLg)
 - [Gitter](https://gitter.im/arend-lang/community)
 
-### Articles and links about Arend and Formal verification
+### Articles and links about Arend, Formal verification other learning resources
 - [Arend - HoTT-based dependent type language (part 1)](https://geeks-world.github.io/articles/469569/index.html)
 - [Learning Resources for Formal verification](https://avigad.github.io/formal_methods_in_education/)
 - [Arend reorg](https://github.com/JetBrains/Arend/pull/177)
+- [HoTT.org](https://homotopytypetheory.org)
+- [Andrej Bauer blog](http://math.andrej.com/about/)
+
+### Open this project with IntelliJ-Arend
+
+1. clone this repository
+2. Create new Project from existing Sources > .idea based Project > mark it as an Arend Project
+
+If the ide misses the binaries for the standard library, please download this [zip](https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip)
 
 # Copyright
 

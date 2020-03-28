@@ -1,4 +1,4 @@
 langVersion: ""
 sourcesDir: src
 binariesDir: .bin
-dependencies: [arend-lib, proofs]
+dependencies: [arend-lib]

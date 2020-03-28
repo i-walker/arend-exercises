@@ -1,4 +1,5 @@
 \import Set
+\import papers.itrees.Itree
 
 -- 1. Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
 
@@ -51,12 +52,18 @@
   (Nat.divMod x y).2
 
 \func testmod : mod 4 2 = 0 => idp
+
 -- type checker bails here
 
-\func gcd (x y : Nat) : Nat
-\elim y
+\func gcd (x y : Nat) : \Sigma Nat Nat
+  | 0, 0 => {?}
+  | 0, suc n => {?}
+  | suc n, 0 => {?}
+  | suc n, suc n1 => {?}
+
+{-\elim y
   | zero => x
-  | n => gcd n (mod x n)
+  | n => gcd n (mod x n)-}
 
 -- 6. Define the map function.
 
@@ -93,14 +100,16 @@
 -- 7. Define the transpose function.
 --    It takes a list of lists considered as a matrix and returns a list of lists which represents the transposed matrix.
 
-\func transpose {A : \Type} (ll : List (List A)) : List (List A) =>
-  step (List.len ll) ll
-  \where
-    \func step {A : \Type} (a : Nat) (ll : List (List A)) : List (List A)
-    \elim a
-      | zero => ll
-      | suc n => step n (:: (headL ll) (transpose (List.map List.tail ll)))
+\func transpose
+  {A : \Type}
+  (ll : List (List A))
+  : List (List A)
+  | nil => nil
+  | :: nil l => :: nil l
+  | :: (:: a l1) l => {?}
 
+{- | zero => ll
+| suc n => step n (:: (headL ll) (transpose (List.map List.tail ll)))-}
 \func test2 : transpose
     ((1 :: 2 :: 3 :: nil) :: (4 :: 5 :: 6 :: nil) :: nil) =
 ((1 :: 4 :: nil) :: (2 :: 5 :: nil) :: (3 :: 6 :: nil) :: nil) =>
@@ -115,6 +124,7 @@
 \func \infix 1 $ {A B : \Type} (f : A -> B) : A -> B =>
   \lam a => f a
 
+-- | playing around with continuation
 \func pythagoras {R : \Type} (x y : Nat) : (Nat -> R) -> R =>
   \lam k => square x $(
                         \lam x_ =>  square y $(
@@ -124,7 +134,7 @@
 
 \func id_continuation : pythagoras 3 4 id = id 25 => idp
 
-\func example'' {n m : Nat} (p : suc n = m) => 0
+\func example'' {n m : Nat} (p : suc n = m) => p
 
-\func example''Test (pp : 8 = 3) => example'' pp
+\func example''Test (pp : 4 = 3) => example'' pp
 

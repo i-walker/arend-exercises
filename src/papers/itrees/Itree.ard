@@ -1,24 +1,55 @@
-{-
-  - This module tries to portray an intuition into interaction trees most of the explainations are based or directly ported from
-  - the paper: `Interaction Trees - Representing Recursive and Impure Programs in Coq` https://arxiv.org/abs/1906.00046
-  - Have fun reading :)
-  - Thanks to the authors and associated contributors for their great contribution, work and oss library https://github.com/DeepSpec/InteractionTrees.
--}
+\import Algebra.Monoid
+\import Category
 
-\module SimplifiedITree \where {
+{- |
+ - This module tries to portray an intuition into interaction trees most of the explainations are based or directly ported from
+ - the paper: `Interaction Trees - Representing Recursive and Impure Programs in Coq` https://arxiv.org/abs/1906.00046
+ - Have fun reading :)
+ - Thanks to the authors and associated contributors for their great contribution, work and oss library https://github.com/DeepSpec/InteractionTrees.
+ -}
 
-  {-
-  - Interaction trees represent computations that interact with an external environment.
-  - -}
-  \data Itree
-    (E : \Type -> \Type)                           --
-    (R : \Type)                                    --
-    -- constructors
-    | ret (r : R)                                  -- computation terminating with value r of type R
-    | tau (t : Itree E R)                          -- "silent" tau transition with a child tree t
-    | vis {A : \Type}
-          (e : E A)
-          (k : A -> Itree E R)
-}
+{- |
+ - Interaction trees represent computations that interact with an external environment.
+ - This current draft is an inductive type, whereas the one proposed in the paper is a coinductive type.
+ - We're currently looking into methods or workaround to achive a coalgebra that resembles the original idea.
+ - -}
+\data Itree
+  -- | E is the interface communicating with our environment
+  (E : \Type -> \Type)
+  -- | when a computation halts it returns the Type R
+  (R : \Type)
+  {- |
+   - a computation terminating with value r of type R
+   - -}
+  | ret (r : R)
 
+  {- |
+   - "silent" tau transition with a child tree t
+   - -}
+  | tau (t : Itree E R)
 
+  {- |
+   - a visible [event] yielding an answer A.
+   - k models continuation, and the type of k is called KTree.
+   - -}
+  | vis {A : \Type}
+        (event : E A)
+        (k : A -> Itree E R)
+  \where {
+    \func trigger
+      {E : \Type -> \Type}
+      {A : \Type}
+      (event : E A) : Itree E A =>
+      vis event (\lam x => ret x)
+
+    \func bind
+      {E : \Type -> \Type}
+      {A : \Type}
+      {B : \Type}
+      (t1 : Itree E A)
+      (k : A -> Itree E B)
+      : Itree E B \with
+      | ret r, k => k r
+      | tau t, k => bind t k
+      | vis event k, k1 => vis event (\lam x => bind (k x) k1)
+  }
