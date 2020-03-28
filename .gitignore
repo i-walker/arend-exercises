@@ -4,6 +4,7 @@ local.properties
 build/
 /.idea/
 lib/Prelude.arc
+.bin
 # IntelliJ
 /out/
 
