@@ -1,4 +1,4 @@
-\import Records
+\import arend.Part1.Records
 
 -- 1. Define the function 'swap' in several ways.
 

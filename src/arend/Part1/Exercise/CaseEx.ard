@@ -1,4 +1,4 @@
-\import Case
+\import arend.Part1.Case
 
 -- 1. Implement any sorting algorithm using \case for pattern matching on the result of comparison of elements
 -- of a list.

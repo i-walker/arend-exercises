@@ -1,0 +1,36 @@
+name: Type checking
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+# 1.Step download jar from https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
+# 2.Step test if download is fine with: java -jar arend.jar
+# 3.Step download std-lib binaries into project https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
+# 4.Step type checking: java -jar $arend -L$libs $myProject
+
+jobs:
+  type_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          architecture: x64
+      - name: Get arend cli and std-lib
+        run: |
+          wget https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
+          java -jar arend.jar
+          wget https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
+          unzip arend-lib.zip
+      - name: Type check code
+        env:
+            JAVA_OPTS: -Xms512m -Xmx1024m
+        run: |
+            build=$(java -jar arend.jar -L/. arend.yaml)
+            echo $build
+            case $build in *\[ERROR\]*) exit 1;; *) exit 0;; esac
