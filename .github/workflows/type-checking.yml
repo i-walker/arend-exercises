@@ -4,7 +4,7 @@ on: pull_request
 
 # 1.Step download jar from https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
 # 2.Step test if download is fine with: java -jar arend.jar
-# 3.Step download std-lib binaries into project
+# 3.Step download std-lib binaries into project https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
 # 4.Step type checking: java -jar $arend -L$libs $myProject
 
 jobs:
@@ -21,3 +21,9 @@ jobs:
         run: |
           wget https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
           java -jar arend.jar
+          curl -O https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
+      - name: Type check code
+          env:
+            JAVA_OPTS: -Xms512m -Xmx1024m
+          run: |
+            java -jar arend.jar -L/. arend.yaml
