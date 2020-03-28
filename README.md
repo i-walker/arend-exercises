@@ -1,6 +1,6 @@
 
 # arend-exercises
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fi-walker%2Farend-exercises%2Fbadge&label=Typechecked&logo=none%3Fref%3Dmaster&style=popout)](https://actions-badge.atrox.dev/i-walker/arend-exercises/goto?ref=master)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fi-walker%2Farend-exercises%2Fbadge&label=build&logo=none%3Fref%3Dmaster&style=popout)](https://actions-badge.atrox.dev/i-walker/arend-exercises/goto?ref=master)
 
 This repo aggregates notes, exercise implementations reformulated in [Arend](https://arend-lang.github.io) from the internet, papers, lectures and courses regarding various topics from HoTT, effect systems, program verification, compilers and many more.
 It comes from an effort to openly learn and share.
