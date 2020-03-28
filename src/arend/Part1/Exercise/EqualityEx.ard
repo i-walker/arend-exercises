@@ -1,4 +1,4 @@
-\import Equality
+\import arend.Part1.Equality
 
 -- 1. Define congruence for functions with two arguments via transport.
 --    It is allowed to use any functions defined via transport.

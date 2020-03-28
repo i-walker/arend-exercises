@@ -1,4 +1,4 @@
-\import Universes
+\import arend.Part1.Universes
 
 -- 1. Calculate levels in each of the the invocations of 'id''' below.
 --    Specify explicitly result types for all idTest*.

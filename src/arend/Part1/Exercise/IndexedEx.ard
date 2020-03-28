@@ -1,4 +1,4 @@
-\import Indexed
+\import arend.Part1.Indexed
 
 -- 1. Implement the function 'lookup', which takes a list and a natural number n and returns the n-th element in the list.
 --    Note that it is impossible to define such a function without restrictions on n sice n can be greater than the size of the list.
