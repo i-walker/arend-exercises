@@ -19,5 +19,5 @@ jobs:
           architecture: x64
       - name: Get arend cli and std-lib
         run: |
-          curl -O https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
+          curl -o arend.jar https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
           java -jar arend.jar
