@@ -1,6 +1,10 @@
 name: Type checking
 
-on: pull_request
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 
 # 1.Step download jar from https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
 # 2.Step test if download is fine with: java -jar arend.jar
@@ -29,4 +33,4 @@ jobs:
         run: |
             build=$(java -jar arend.jar -L/. arend.yaml)
             echo $build
-            case $build in *[ERROR]*) exit 1;; esac
+            case $build in *[ERROR]*) exit 1;; *) exit 0;; esac
