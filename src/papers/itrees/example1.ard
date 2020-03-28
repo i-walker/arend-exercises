@@ -1,0 +1,19 @@
+\import papers.itrees.Itree
+
+{- |
+ - One with IO
+ -
+ - -}
+\data IO (A : \Type)
+  | Input Nat
+  | Output (A = Nat -> void)
+
+\data void
+
+{- Still doesn't type-check
+\func echo : Itree IO void =>
+  vis (Input 5) (\lam x => vis (Output x) (\lam _ => echo))
+
+\func spin : Itree IO void => tau spin
+-}
+

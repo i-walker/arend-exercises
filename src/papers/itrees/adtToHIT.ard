@@ -1,0 +1,39 @@
+{- |
+ - ADT : allow recrusive data types
+ -}
+\data NatList
+  | nil
+  | \infix 4 :: Nat NatList
+
+{- |
+ - GADT : allow to define a type operator
+ - -}
+\data Tree (A : \Type)
+  | leaf A
+  | node (Tree (\Sigma A A)) {-\with {
+    | leaf a => predicate(a)
+  }-}
+
+{- |
+ - Inductive Type:
+ - data structures are allowed to be infinite as long as the constructor is strictly positive.
+ - -}
+\data Stream (A : \Type)
+  | Seq (A -> Stream A)
+
+\data Vec (A : \Type) (n : Nat) \elim n
+  | 0 => nil
+  | suc x => vcons A (Vec A x)
+
+{- |
+ - HIT : allows to define conditions for
+ - -}
+\data Int
+  | pos Nat
+  | neg Nat \with {
+    | zero => pos zero
+  }
+
+\func sum (v : Vec Nat 5) \with
+  | nil => {?} -- | 'NatList.nil' is not a constructor of data type Vec
+  | vcons a n => {?}

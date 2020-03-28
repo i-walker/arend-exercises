@@ -2,9 +2,6 @@ local.properties
 
 build/
 /.idea/
-/.gradle/
-*.iml
-src/gen
 lib/Prelude.arc
 .bin
 # IntelliJ
