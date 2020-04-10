@@ -126,8 +126,8 @@
   (xs ys zs : List A) :
   (xs ++ ys) ++ zs = xs ++ (ys ++ zs)
   \elim zs
-    | nil =>
-      (xs ++ ys) = xs ++ ys
+    | nil => {?}
+      -- (xs ++ ys) = xs ++ ys
     | cons a l => pmap
         (\lam x => x)
         (++-assoc xs ys (cons a l))

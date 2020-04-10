@@ -1,3 +1,5 @@
+
+\module AdtToHIT \where {
 {- |
  - ADT : allow recrusive data types
  -}
@@ -36,3 +38,4 @@
 \func sum  (v : Vec Nat 5) : Nat \with
   -- | nil => {?} 'NatList.nil' is not a constructor of data type Vec
   | vcons a n => {?}
+}
