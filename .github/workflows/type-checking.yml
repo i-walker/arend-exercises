@@ -31,5 +31,5 @@ jobs:
         env:
             JAVA_OPTS: -Xms512m -Xmx1024m
         run: |
-            build=$(java -jar arend.jar -L/. arend.yaml) && echo $build
+            build=$(java -jar arend.jar -L/. arend.yaml) && echo "$build"
             case $build in *\[ERROR\]*) exit 1;; *) exit 0;; esac
