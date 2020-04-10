@@ -18,9 +18,6 @@
 --    Implement the function that converts an element of Fin n -> A to element of Vec A n.
 
 \func funToVec {A : \Type} {n : Nat} (f : Fin n -> A) : Vec A n => {?}
-s
-    s
-ss
 
 -- 6. Define the type of matrices and a number of functions for them:
 
