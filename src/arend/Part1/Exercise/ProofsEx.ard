@@ -1,3 +1,4 @@
+\import Paths
 \import arend.Part1.Proofs
 \open Nat (+, *)
 
@@ -46,17 +47,37 @@
 
 -- 8. Prove that if, for every x : Nat, P x is true, then there exists x : Nat such that P x is true.
 
-\func t8 (P : Nat -> \Type) (h : \Pi (x : Nat) -> P x) : \Sigma (x : Nat) (P x) => {?}
+\func t8 {P : Nat -> \Type}
+         (x : Nat)
+         (h : \Pi (x : Nat) -> P x) : \Sigma (x : Nat) (P x) =>
+  (x , h x)
 
 -- 9. Prove that if there is no x : Nat such that P x holds, then P 3 is false.
 
-\func t9 (P : Nat -> \Type) (h : Not (\Sigma (x : Nat) (P x))) : Not (P 3) => {?}
+\func t9 (P : Nat -> \Type)
+         (h : Not (\Sigma (x : Nat) (P x))) : Not (P 3) =>
+  \lam p3 => h (3, p3)
 
 -- 10. Formulate and prove the following proposition:
 --     t10 : If, for every x : Nat, P x implies Q x, then the existence of an element x : Nat for which P x is true implies the existence of an element x : Nat for which Q x is true.
 
+\func t10
+  {P : Nat -> \Type}
+  {Q : Nat -> \Type}
+  (a : \Sigma (x : Nat) (P x))
+  (f : \Pi (x : Nat) -> (P x) -> Q x)
+  : \Sigma (x : Nat) (Q x) => (a.1, f a.1 (a.2))
+
 -- 11. Formulate and prove the following proposition:
 --     t11 : If, for every x : Nat, either P x is false or Q x is false, then P 3 implies that Q 3 is false.
+
+\func t11
+  {P : Nat -> \Type}
+  {Q : Nat -> \Type}
+  (_ : \Pi (x : Nat) -> Not (P x) -> Q x)
+  (g : \Pi (x : Nat) -> P x -> Not (Q x))
+  : (P 3) -> Not (Q 3) =>
+  \lam p => g 3 p
 
 -- 12. Prove associativity of `and` and `or`.
 
@@ -70,11 +91,27 @@
   | _, true => true
   | false, false => false
 
-\func and-assoc (x y z : Bool) : (x and y) and z = x and (y and z) => {?}
+\func and-assoc (x y z : Bool) :
+  (x and y) and z = x and (y and z)
+  | false, _ , _ => idp
+  | true , false, _ => idp
+  | true , true , true => idp
+  | true , true , false => idp
 
-\func or-assoc (x y z : Bool) : (x or y) or z = x or (y or z) => {?}
+\func or-assoc (x y z : Bool) :
+  (x or y) or z = x or (y or z)
+  | true, true, true => idp
+  | true, true, false => idp
+  | true, false, true => idp
+  | true, false, false => idp
+  | false, true, true => idp
+  | false, true, false => idp
+  | false, false, true => idp
+  | false, false, false => idp
 
 -- 13. Prove that 2 * 2 equals to 4.
+
+\func twoTimestwo : 2 * 2 = 4 => idp
 
 -- 14. Prove associativity of ++.
 
@@ -84,4 +121,13 @@
   | nil => ys
   | cons x xs => cons x (xs ++ ys)
 
-\func ++-assoc {A : \Type} (xs ys zs : List A) : (xs ++ ys) ++ zs = xs ++ (ys ++ zs) => {?}
+\func ++-assoc
+  {A : \Type}
+  (xs ys zs : List A) :
+  (xs ++ ys) ++ zs = xs ++ (ys ++ zs)
+  \elim zs
+    | nil =>
+      (xs ++ ys) = xs ++ ys
+    | cons a l => pmap
+        (\lam x => x)
+        (++-assoc xs ys (cons a l))

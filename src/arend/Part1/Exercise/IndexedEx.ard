@@ -1,10 +1,32 @@
 \import arend.Part1.Indexed
 
+{-\func reverse {A : \Type} (xs : List A) : List A => rev nil xs
+  \where
+    \func rev {A : \Type} (acc xs : List A) : List A \elim xs
+      | nil => acc
+      | cons x xs => rev (cons x acc) xs
+
+\func reverse-isInvolutive
+  {A : \Type}
+  (xs : List A) : reverse (reverse xs) = xs
+  => rev-isInv1 nil xs
+      \where
+        \func rev-isInv1 {A : \Type} (acc xs : List A) : reverse (reverse.rev acc xs) = reverse.rev xs acc \elim xs
+          | nil => idp
+          | cons a l => rev-isInv1 (cons a acc) l-}
+
 -- 1. Implement the function 'lookup', which takes a list and a natural number n and returns the n-th element in the list.
 --    Note that it is impossible to define such a function without restrictions on n sice n can be greater than the size of the list.
 --    Therefore the function should also take a proof that n is in the right range: T (n < length xs).
 
-\func lookup => {?}
+\func lookup
+  {A : \Type}
+  (xs : List A)
+  (n : Nat)
+  (p : T (n < List.length xs)) : A \elim xs, n
+  | cons a l , 0 => a
+  | cons a l , suc x => lookup l x p
+  | nil, n => {?}
 
 -- 2. Implement function replicate for 'vec' and 'Vec' (this function creates the list of a given length filled with a
 -- given element).
@@ -38,7 +60,9 @@
 -- multiplication
 
 -- z is neutral under addition.
-\func matMul {A : \Type} (z : A) (add mul : A -> A -> A) (n m k : Nat) (M : Mat A n m) (N : Mat A m k) : Mat A n k => {?}
+
+\func matMul {A : \Type} (z : A) (add mul : A -> A -> A) (n m k : Nat) (M : Mat A n m) (N : Mat A m k) : Mat A n k =>
+  {?}
 
 -- 7. Define the type CTree A n of (complete and full) binary trees of height precisely n, which store elements in internal nodes, but not in leaves.
 --    The height of a leaf is 0.

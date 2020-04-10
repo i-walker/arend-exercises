@@ -47,6 +47,7 @@
 
 -------------------------------------------------
 -- Examples of propositions and proofs
+-- | \Pi (x : A) -> P x corresponds to \Sigma (x : A) (P x)
 -------------------------------------------------
 
 \data Bool | true | false
