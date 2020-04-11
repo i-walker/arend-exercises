@@ -1,3 +1,6 @@
+\import Data.Bool
+\import core.data.Either
+
 -------------------------------------------------
 -- Symmetry, transitivity, Leibnitz principle
 -------------------------------------------------
@@ -41,10 +44,6 @@
              (p : \Pi (a : A) -> f a = g a) : f = g
   => path (\lam i => \lam a => p a @ i)
 
-\data \fixr 2 Either (A B : \Type)
-  | inl A
-  | inr B
-
 \data Empty
 
 \func lem : \Pi (X : \Type) -> Either X (X -> Empty) => {?}
@@ -70,7 +69,7 @@
   | zero => z
   | suc n => s n (Nat-rec P z s n)
 
-\data Bool | false | true
+-- \data Bool | false | true
 
 -- Dependent eliminator for Bool (recursor for Bool is just 'if').
 \func Bool-elim (P : Bool -> \Type)

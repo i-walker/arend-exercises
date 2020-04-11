@@ -1,3 +1,6 @@
+\import Data.Bool
+\import core.data.List
+\import core.data.Maybe
 
 -------------------------------------------------
 -- Hierarchies of universes, polymorphism
@@ -44,8 +47,6 @@
 \class Functor (F : \Type -> \Type)
   | fmap {A B : \Type} : (A -> B) -> F A -> F B
 
-\data Maybe (A : \Type) | nothing | just A
-
 \func test10 : \Type (\suc \lp) => Functor \lp Maybe
 
 -------------------------------------------------
@@ -55,7 +56,7 @@
 
 \data Unit | unit
 
-\data Bool | false | true
+-- \data Bool | false | true
 
 \func T (b : Bool) : \Type
   | true => Unit
@@ -99,7 +100,7 @@
   | list Type
   | arr Type Type
 
-\data List (A : \Type) | nil | cons A (List A)
+-- \data List (A : \Type) | nil | cons A (List A)
 
 \func El (t : Type) : \Type0 \elim t
   | nat => Nat

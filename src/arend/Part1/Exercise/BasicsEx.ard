@@ -1,4 +1,9 @@
+\import Data.Bool
+\import Function
+\import Paths
 \import Set
+\import core.data.List
+\import core.typeclasses.Functor
 
 -- 1. Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
 
@@ -18,8 +23,6 @@
 
 -- 2. Define in Arend the function 'if', which takes a boolean value b and two elements of an arbitrary type A
 --    and return the first element when b equals to true and the second one otherwise.
-
-\data Bool | true | false
 
 \func if (A :\Type) (b : Bool) (a c : A): A
 \elim b
@@ -64,54 +67,25 @@
   | zero => x
   | n => gcd n (mod x n)-}
 
--- 6. Define the map function.
-
-\data List (A : \Type) | nil | \infixr 5 :: A (List A)
-  \where {
-    \func len {A : \Type} (l : List A) : Nat \with
-      | nil => 0
-      | :: x xs => suc (len xs)
-
-    \func map {A B : \Type} (f : A -> B) (xs : List A) : List B
-    \elim xs
-      | nil => nil
-      | :: a xs => :: (f a) (map f xs)
-
-    \func head {A : \Type} (xs : List A) : Maybe A \with
-      | nil => None
-      | :: x xs => just x
-
-    \func tail {A : \Type} (xs : List A) : List A \with
-      | :: x xs => xs
-      | nil => nil
-  }
-
-\data Maybe (A : \Type) | just A | None
-
-\func headL {A : \Type} (xs : List (List A)) : List A \with
-  | nil => nil
-  | :: x xs =>
-    \case List.head x \with {
-      | None => headL xs
-      | just a => :: a (headL xs)
-    }
+-- 6. Define the map function. @see List.map
 
 -- 7. Define the transpose function.
+
 --    It takes a list of lists considered as a matrix and returns a list of lists which represents the transposed matrix.
 
 \func transpose
   {A : \Type}
   (ll : List (List A))
-  : List (List A)
-  | nil => nil
-  | :: nil l => :: nil l
-  | :: (:: a l1) l => {?}
+  : List (List A) => {?}
+
+-- List.traverse ll (\lam (x : List A) => List.head x)
 
 {- | zero => ll
 | suc n => step n (:: (headL ll) (transpose (List.map List.tail ll)))-}
-\func test2 : transpose
-    ((1 :: 2 :: 3 :: nil) :: (4 :: 5 :: 6 :: nil) :: nil) =
-((1 :: 4 :: nil) :: (2 :: 5 :: nil) :: (3 :: 6 :: nil) :: nil) =>
+\func test2 :
+  transpose
+      ((1 :: 2 :: 3 :: nil) :: (4 :: 5 :: 6 :: nil) :: nil) =
+  ((1 :: 4 :: nil) :: (2 :: 5 :: nil) :: (3 :: 6 :: nil) :: nil) =>
   idp
 
 \func add {R : \Type} (x y : Nat) : (Nat -> R) -> R =>
@@ -128,8 +102,6 @@
   \lam k => square x $(
                         \lam x_ =>  square y $(
                                                 \lam y_ => add x_ y_ $ k))
-
-\func id {A : \Type} (x : A) : A => x
 
 \func id_continuation : pythagoras 3 4 id = id 25 => idp
 

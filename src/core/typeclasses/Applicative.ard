@@ -1,0 +1,5 @@
+\import core.typeclasses.Apply
+\import core.typeclasses.Functor
+
+\class Applicative \extends Apply
+  | just {A : \Type} A : F A

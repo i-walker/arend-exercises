@@ -1,4 +1,5 @@
 \import arend.Part1.EqualityProofs
+\import core.data.List
 
 -- 1. The operator 'J' has a different form, which we denote 'Jalt'. Prove that 'J' and 'Jalt' are equivalent, i.e.
 -- define 'J' in terms of 'Jalt' and vice versa.
@@ -12,7 +13,10 @@
 -- Define 'J' via 'Jalt'. You can use only 'Jalt', 'idp' and everything definable in terms of these constructs (but not pattern matching on 'idp').
 -- See the end of this file for a hint.
 
-\func transport' {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a' => {?}
+\func transport'
+  {A : \Type}
+  (B : A -> \Type) {a a' : A}
+  (p : a = a') (b : B a) : B a' => {?}
 
 \func sigma-contr {A : \Type} {a : A} (p : \Sigma (x : A) (a = x)) : (a,idp) = {\Sigma (x : A) (a = x)} p => {?}
 
@@ -28,7 +32,7 @@
 
 -- 4. Define the membership predicate 'In' for lists.
 
-\data List (A : \Type) | nil | cons A (List A)
+-- \data List (A : \Type) | nil | cons A (List A)
 
 \data In {A : \Type} (a : A) (xs : List A)
 

@@ -1,3 +1,5 @@
+
+\module AdtToHIT \where {
 {- |
  - ADT : allow recrusive data types
  -}
@@ -6,13 +8,11 @@
   | \infix 4 :: Nat NatList
 
 {- |
- - GADT : allow to define a type operator
+ - GADT : allow defining type operators.
  - -}
 \data Tree (A : \Type)
   | leaf A
-  | node (Tree (\Sigma A A)) {-\with {
-    | leaf a => predicate(a)
-  }-}
+  | node (Tree (\Sigma A A))
 
 {- |
  - Inductive Type:
@@ -26,7 +26,7 @@
   | suc x => vcons A (Vec A x)
 
 {- |
- - HIT : allows to define conditions for
+ - HIT : allow defining conditions on constructors.
  - -}
 \data Int
   | pos Nat
@@ -34,6 +34,8 @@
     | zero => pos zero
   }
 
-\func sum (v : Vec Nat 5): Nat \with
-   -- | | nil => {?} 'NatList.nil' is not a constructor of data type Vec
+-- | Vec is an HIT, as the constructor nil is conditioned by n
+\func sum  (v : Vec Nat 5) : Nat \with
+  -- | nil => {?} 'NatList.nil' is not a constructor of data type Vec
   | vcons a n => {?}
+}
