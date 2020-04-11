@@ -6,11 +6,19 @@
 
 \class Traverse \extends Functor, Foldable
   | traverse {A B : \Type}
-             {G : \Type -> \Type (\suc \lp)}
+             {G : \Type  -> \Type (\suc \lp)}
              {AG : Applicative G}
              (fa : F A) (f : A -> G B) : G (F B)
-  | sequence {A B : \Type}
+  | sequence {A : \Type}
              {G : \Type -> \Type (\suc \lp)}
              {AG : Applicative G}
-             (fa : F A) : G (F A)
-   -- | traverseId : traverse fa Id.just = map fa id
+             (fga : F (G A)) : G (F A)
+
+-- | sequence = traverse fga id
+
+-- | TODO: traverseId : traverse fa Id.just = map fa id
+{-| traverse-id {A : \Type}
+              {G : \Type -> \Type (\suc \lp)}
+              {AG : Applicative G}
+              (fa : F A) : traverse fa (\lam x => Id.just x) = map id fa-}
+

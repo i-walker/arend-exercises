@@ -1,7 +1,7 @@
 \import Function
 
 \class Functor
-  (F : \Type -> \Type (\suc \lp))
-  | map {A B : \Type} (F A) (A -> B) : F B
-  | covIdentity {A : \Type} (fa : F A) : map fa id = fa
-  | covComposition {A B C : \Type} (fa : F A) (f : A -> B) (g : B -> C) : map fa (\lam x => g(f(x))) = map (map fa f) g
+  (F : \Type  -> \Type (\suc \lp))
+  | map {A B : \Type} (A -> B) : (F A) -> F B
+  | map-id {A : \Type} (y : F A) : map id y = y
+  | map-comp {A B C : \Type} (f : A -> B) (g : B -> C) (y : F A) : map (g o f) y = map g (map f y)

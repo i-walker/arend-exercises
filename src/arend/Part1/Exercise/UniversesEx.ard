@@ -1,6 +1,7 @@
 \import arend.Part1.Universes
 \import core.data.List
 \import core.data.Maybe
+\import core.typeclasses.Functor
 
 -- 1. Calculate levels in each of the the invocations of 'id''' below.
 --    Specify explicitly result types for all idTest*.

@@ -38,28 +38,29 @@
       | nil => 0
       | :: x xs => suc (len xs)
 
-    \func map {A B : \Type} (xs : List A) (f : A -> B)  : List B
+    \func map {A B : \Type} (f : A -> B) (xs : List A) : List B
     \elim xs
       | nil => nil
-      | :: a xs => :: (f a) (map xs f)
+      | :: a xs => :: (f a) (map f xs)
 
     \func fmap {A B : \Type} (xs : List A) (f : A -> List B) : List B
       \elim xs
         | nil => nil
         | :: a xs => f a ++ fmap xs f
 
-    \func covIdentity {A : \Type} (xs : List A) : map xs id = xs \with
+    \func map-id {A : \Type} (xs : List A) : map id xs = xs \with
       | nil => idp
-      | :: a ys => pmap (\lam x => :: a x) (covIdentity ys)
+      | :: a ys => pmap (\lam x => :: a x) (map-id ys)
 
-    \func covComposition
+    \func map-comp
       {A B C : \Type}
+      (f : A -> B)
+      (g : B -> C)
       (fa : List A)
-      (f : A -> B) (g : B -> C)
-      : map fa (\lam x => g(f(x))) = map (map fa f) g
+      : map (\lam x => g(f(x))) fa = map g (map f fa)
     \elim fa
       | nil => idp
-      | :: a l => pmap (\lam x => :: (g(f(a))) x) (covComposition l f g)
+      | :: a l => pmap (\lam x => :: (g(f(a))) x) (map-comp f g l)
 
     \func head {A : \Type} (xs : List A) : Maybe A \with
       | nil => Maybe.nothing
@@ -80,3 +81,12 @@
       | nil => nil
       | :: f ys => {?} -- map xs f ++
   }
+
+\instance ListFunctor : Functor List
+  | map => List.map
+  | map-id => List.map-id
+  | map-comp => List.map-comp
+
+\instance ListFoldable : Foldable List
+  | foldLeft => List.foldLeft
+  | foldRight => List.foldRight
