@@ -1,4 +1,6 @@
 \import arend.Part1.Universes
+\import core.data.List
+\import core.data.Maybe
 
 -- 1. Calculate levels in each of the the invocations of 'id''' below.
 --    Specify explicitly result types for all idTest*.
@@ -19,7 +21,7 @@
 
 \func length {A : \Type} (xs : List A) : Nat
   | nil => 0
-  | cons _ xs => suc (length xs)
+  | :: _ xs => suc (length xs)
 
 \func List-ind
   {A : \Type}

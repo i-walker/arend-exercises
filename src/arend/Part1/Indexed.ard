@@ -1,16 +1,21 @@
+\import Data.Bool
+\import core.data.Either
+\import core.data.List
+\import core.data.Maybe
+
 -------------------------------------------------
 -- Insertion sort and reverse
 -------------------------------------------------
 
 
-\data Bool | false | true
+-- \data Bool | false | true
 
-\data List (A : \Type) | nil | cons A (List A)
+{-\data List (A : \Type) | nil | cons A (List A)
   \where {
     \func length {A : \Type} (xs : List A) : Nat \elim xs
       | nil => 0
       | cons _ l => suc (length l)
-  }
+  }-}
 
 \func if {A : \Type} (b : Bool) (t e : A) : A \elim b
   | true => t
@@ -18,11 +23,11 @@
 
 \func sort {A : \Type} (less : A -> A -> Bool) (xs : List A) : List A \elim xs
   | nil => nil
-  | cons x xs => insert less x (sort less xs)
+  | :: x xs => insert less x (sort less xs)
   \where
     \func insert {A : \Type} (less : A -> A -> Bool) (x : A) (xs : List A) : List A \elim xs
-      | nil => cons x nil
-      | cons x' xs => if (less x x') (cons x (cons x' xs)) (cons x' (insert less x xs))
+      | nil => :: x nil
+      | :: x' xs => if (less x x') (:: x (:: x' xs)) (:: x' (insert less x xs))
 
 \data Empty
 
@@ -52,10 +57,10 @@
   \where
     \func rev {A : \Type} (acc xs : List A) : List A \elim xs
       | nil => acc
-      | cons x xs => rev (cons x acc) xs
+      | :: x xs => rev (:: x acc) xs
 
--- reverse (cons x xs) => rev nil (cons x xs) => rev (cons x nil) xs
--- reverse (reverse (cons x xs)) => reverse (rev (cons x nil) xs) => rev nil (rev (cons x nil) xs)
+-- reverse (:: x xs) => rev nil (:: x xs) => rev (:: x nil) xs
+-- reverse (reverse (:: x xs)) => reverse (rev (:: x nil) xs) => rev nil (rev (:: x nil) xs)
 
 -------------------------------------------------
 -- Examples of proofs: +-assoc and reverse-isInvolution
@@ -66,7 +71,7 @@
   \where
     \func rev-isInv {A : \Type} (acc xs : List A) : reverse (reverse.rev acc xs) = reverse.rev xs acc \elim xs
       | nil => idp
-      | cons x xs => rev-isInv (cons x acc) xs
+      | :: x xs => rev-isInv (:: x acc) xs
 
 \func \infixl 6 + (x y : Nat) : Nat \elim y
   | 0 => x
@@ -106,8 +111,6 @@
 
 \func Tail {A : \Type} {n : Nat} (xs : Vec A (suc n)) : Vec A n \elim xs
   | fcons _ xs => xs
-
-\data Maybe (A : \Type) | nothing | just A
 
 \func first {A : \Type} {n : Nat} (xs : Vec A n) : Maybe A \elim n, xs
   | 0, fnil => nothing
@@ -151,9 +154,9 @@
 -- The following does not typecheck
 -- \func fin3 : Fin 3 => fsuc (fsuc (fsuc fzero))
 
-\data \fixr 2 Either (A B : \Type)
+{-\data \fixr 2 Either (A B : \Type)
   | inl A
-  | inr B
+  | inr B-}
 
 \func atMost3 (x : Fin 3) : Either (x = fin0) (Either (x = fin1) (x = fin2)) \elim x
   | fzero => inl idp

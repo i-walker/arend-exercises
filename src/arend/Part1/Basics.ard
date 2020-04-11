@@ -1,3 +1,5 @@
+\import Data.Bool
+\import core.data.List
 \open Nat
 
 -------------------------------------------------
@@ -84,7 +86,7 @@
    data Unit = Unit
 -}
 
-\data Bool | false | true
+-- \data Bool | false | true
 {- Haskell:
    data Bool = False | True
 -}
@@ -215,7 +217,7 @@
 -- List, append
 -------------------------------------------------
 
-\data List (A : \Type) | nil | cons A (List A)
+-- \data List (A : \Type) | nil | cons A (List A)
 {- Haskell:
    data List a = Nil | Cons a (List a)
 -}
@@ -224,9 +226,9 @@
 \func emptyList => nil {Nat}
 
 -- Operator 'append'
-\func \infixl 6 ++ {A : \Type} (xs ys : List A) : List A \elim xs
+{-\func \infixl 6 ++ {A : \Type} (xs ys : List A) : List A \elim xs
   | nil => ys
-  | cons x xs => cons x (xs ++ ys)
+  | :: x xs => :: x (xs ++ ys)-}
 {- Haskell:
    (++) :: List a -> List A -> List a
    Nil ++ ys = ys

@@ -1,0 +1,15 @@
+\import core.typeclasses.Applicative
+
+\data Id (A : \Type) | just A
+  \where {
+    \func map {A B : \Type} (fa : Id A) (f : A -> B) : Id B
+    \elim fa | just a => just (f a)
+
+  }
+
+\instance IdApplicative : Applicative Id
+  | map => Id.map
+  | covIdentity => {?}
+  | covComposition => {?}
+  | <*> => {?}
+  | just => Id.just

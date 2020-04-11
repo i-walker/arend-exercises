@@ -1,3 +1,5 @@
+\import Data.Bool
+
 -------------------------------------------------
 -- Curry-Howard correspondence
 -------------------------------------------------
@@ -50,7 +52,7 @@
 -- | \Pi (x : A) -> P x corresponds to \Sigma (x : A) (P x)
 -------------------------------------------------
 
-\data Bool | true | false
+-- \data Bool | true | false
 
 \func T (b : Bool) : \Type
   | true => Unit

@@ -1,0 +1,82 @@
+\import Function
+\import Paths
+\import core.data.Maybe
+\import core.typeclasses.Applicative
+\import core.typeclasses.Apply
+\import core.typeclasses.Foldable
+\import core.typeclasses.Functor
+\import core.typeclasses.Traverse
+
+\data List (A : \Type) | nil | \infixr 5 :: A (List A)
+  \where {
+    \func foldLeft
+      {A B : \Type}
+      (fa : List A)
+      (b : B)
+      (f : B -> A -> B) : B \elim fa
+      | nil => b
+      | :: a xs => foldLeft xs (f b a) f
+
+    \func foldRight
+      {A B : \Type}
+      (fa : List A)
+      (b : B)
+      (f : A -> B -> B) : B \elim fa
+      | nil => b
+      | :: a xs => foldRight xs (f a b)  f
+
+    \func traverse
+      {A B : \Type}
+      {G : \Type -> \Type (\suc \lp)}
+      {GA : Applicative G}
+      (l : List A)
+      (f : A -> G B)
+      : G (List B) => {?}
+      -- <*>  (GA.just (\lam x => x :: nil)) -- (GA.just nil) (\lam acc gb => {?})
+
+    \func len {A : \Type} (l : List A) : Nat \with
+      | nil => 0
+      | :: x xs => suc (len xs)
+
+    \func map {A B : \Type} (xs : List A) (f : A -> B)  : List B
+    \elim xs
+      | nil => nil
+      | :: a xs => :: (f a) (map xs f)
+
+    \func fmap {A B : \Type} (xs : List A) (f : A -> List B) : List B
+      \elim xs
+        | nil => nil
+        | :: a xs => f a ++ fmap xs f
+
+    \func covIdentity {A : \Type} (xs : List A) : map xs id = xs \with
+      | nil => idp
+      | :: a ys => pmap (\lam x => :: a x) (covIdentity ys)
+
+    \func covComposition
+      {A B C : \Type}
+      (fa : List A)
+      (f : A -> B) (g : B -> C)
+      : map fa (\lam x => g(f(x))) = map (map fa f) g
+    \elim fa
+      | nil => idp
+      | :: a l => pmap (\lam x => :: (g(f(a))) x) (covComposition l f g)
+
+    \func head {A : \Type} (xs : List A) : Maybe A \with
+      | nil => Maybe.nothing
+      | :: x xs => Maybe.just x
+
+    \func \infixl 6 ++ {A : \Type} (xs ys : List A) : List A \elim xs
+      | nil => ys
+      | :: x xs => :: x (xs ++ ys)
+
+    \func tail {A : \Type} (xs : List A) : List A \with
+      | :: x xs => xs
+      | nil => nil
+
+    \func just {A : \Type} (a : A) : List A => :: a nil
+
+    \func <*> {A B : \Type} (xs : List A) (ys : List (A -> B)) : List B
+    \elim ys
+      | nil => nil
+      | :: f ys => {?} -- map xs f ++
+  }

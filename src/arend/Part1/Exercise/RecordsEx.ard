@@ -28,7 +28,6 @@
 
 -- 5. Define the class of monads, which extends the class of functors. Define \instance of this class for 'Maybe'.
 
-\data Maybe (A : \Type) | nothing | just A
 
 -- 6. Define instances for the class of monads for 'State' and 'State''.
 

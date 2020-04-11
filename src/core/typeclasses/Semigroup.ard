@@ -1,0 +1,4 @@
+\import Set
+
+\class Semigroup \extends BaseSet
+  | \infixl 6 ++ E E : E

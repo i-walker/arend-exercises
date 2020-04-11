@@ -1,4 +1,6 @@
+\import Data.Bool (Bool)
 \import arend.Part1.Case
+\import core.data.List
 
 -- 1. Implement any sorting algorithm using \case for pattern matching on the result of comparison of elements
 -- of a list.
@@ -40,7 +42,7 @@
 
 \func repeat {A : \Type} (n : Nat) (a : A) : List A \elim n
   | 0 => nil
-  | suc n => cons a (repeat n a)
+  | suc n => :: a (repeat n a)
 
 \data Result (A : \Type) (xs : List A)
   | empty (xs = nil)

@@ -1,3 +1,5 @@
+\import Data.Bool
+
 -------------------------------------------------
 -- Records: \new, \cowith, projections, pattern matching
 -------------------------------------------------
@@ -100,8 +102,6 @@
 -------------------------------------------------
 -- Dependent records, a type of positive natural numbers
 -------------------------------------------------
-
-\data Bool | true | false
 
 -- compare this definition of T with the one in module Basics
 \data T (b : Bool) \with

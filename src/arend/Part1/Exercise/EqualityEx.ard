@@ -1,3 +1,4 @@
+\import Data.Bool (Bool, false, true)
 \import arend.Part1.Equality
 
 -- 1. Define congruence for functions with two arguments via transport.
@@ -47,7 +48,7 @@
 
 -- 10. Define recursor and eliminator for List.
 
-\data List (A : \Type) | nil | cons A (List A)
+-- \data List (A : \Type) | nil | cons A (List A)
 
 -- 11. We defined transport via coe.
 --     Define a special case of coe via transport.
