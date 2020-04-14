@@ -23,8 +23,8 @@ jobs:
           architecture: x64
       - name: Get arend cli and std-lib
         run: |
-          wget https://github.com/JetBrains/Arend/releases/latest/download/arend.jar
-          java -jar arend.jar
+          wget https://github.com/JetBrains/Arend/releases/latest/download/Arend-1.3.0.jar
+          java -jar Arend-1.3.0.jar
           wget https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip
           unzip arend-lib.zip
       - name: Type check code
