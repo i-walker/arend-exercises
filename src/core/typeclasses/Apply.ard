@@ -1,4 +1,0 @@
-\import core.typeclasses.Functor
-
-\class Apply \extends Functor
-  | <*> {A B : \Type} (fa : F A) (fab : F (A -> B)) : F B

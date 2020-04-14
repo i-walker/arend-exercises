@@ -2,7 +2,7 @@
 \import Paths
 \import core.data.Maybe
 \import core.typeclasses.Applicative
-\import core.typeclasses.Apply
+\import core.data.Compose
 \import core.typeclasses.Foldable
 \import core.typeclasses.Functor
 \import core.typeclasses.Traverse
@@ -27,12 +27,13 @@
 
     \func traverse
       {A B : \Type}
-      {G : \Type -> \Type (\suc \lp)}
+      {G : \Type -> \Type}
+      (fa : List A)
       {GA : Applicative G}
-      (l : List A)
       (f : A -> G B)
       : G (List B) => {?}
-      -- <*>  (GA.just (\lam x => x :: nil)) -- (GA.just nil) (\lam acc gb => {?})
+
+    -- <*>  (GA.just (\lam x => x :: nil)) -- (GA.just nil) (\lam acc gb => {?})
 
     \func len {A : \Type} (l : List A) : Nat \with
       | nil => 0
@@ -43,10 +44,10 @@
       | nil => nil
       | :: a xs => :: (f a) (map f xs)
 
-    \func fmap {A B : \Type} (xs : List A) (f : A -> List B) : List B
-      \elim xs
-        | nil => nil
-        | :: a xs => f a ++ fmap xs f
+    \func flatMap {A B : \Type} (xs : List A) (f : A -> List B) : List B
+    \elim xs
+      | nil => nil
+      | :: a xs => f a ++ flatMap xs f
 
     \func map-id {A : \Type} (xs : List A) : map id xs = xs \with
       | nil => idp
@@ -76,10 +77,12 @@
 
     \func just {A : \Type} (a : A) : List A => :: a nil
 
-    \func <*> {A B : \Type} (xs : List A) (ys : List (A -> B)) : List B
+    \func <*> {A B : \Type} (ys : List (A -> B)) (xs : List A) : List B
     \elim ys
       | nil => nil
-      | :: f ys => {?} -- map xs f ++
+      | :: f ys => {?}
+
+    -- map xs f ++
   }
 
 \instance ListFunctor : Functor List
@@ -90,3 +93,18 @@
 \instance ListFoldable : Foldable List
   | foldLeft => List.foldLeft
   | foldRight => List.foldRight
+
+\instance ListApplicative {FL : Functor List} : Applicative List
+  | map => FL.map
+  | map-id => FL.map-id
+  | map-comp => FL.map-comp
+  | <*> => List.<*>
+  | just => List.just
+
+\instance ListListAp {AG : Applicative List} : Applicative
+  | map => {?}
+  | map-id => {?}
+  | map-comp => {?}
+  | <*> => {?}
+  | just => {?}
+  | F => Compose List List

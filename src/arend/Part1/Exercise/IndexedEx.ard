@@ -1,11 +1,12 @@
 \import arend.Part1.Indexed
 \import core.data.List
 
-{-\func reverse {A : \Type} (xs : List A) : List A => rev nil xs
+
+\func reverse {A : \Type} (xs : List A) : List A => rev nil xs
   \where
     \func rev {A : \Type} (acc xs : List A) : List A \elim xs
       | nil => acc
-      | cons x xs => rev (cons x acc) xs
+      | :: x xs => rev (:: x acc) xs
 
 \func reverse-isInvolutive
   {A : \Type}
@@ -14,7 +15,7 @@
       \where
         \func rev-isInv1 {A : \Type} (acc xs : List A) : reverse (reverse.rev acc xs) = reverse.rev xs acc \elim xs
           | nil => idp
-          | cons a l => rev-isInv1 (cons a acc) l-}
+          | :: a l => rev-isInv1 (:: a acc) l
 
 -- 1. Implement the function 'lookup', which takes a list and a natural number n and returns the n-th element in the list.
 --    Note that it is impossible to define such a function without restrictions on n sice n can be greater than the size of the list.

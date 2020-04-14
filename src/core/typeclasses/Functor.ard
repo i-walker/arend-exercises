@@ -1,7 +1,11 @@
 \import Function
 
 \class Functor
-  (F : \Type  -> \Type (\suc \lp))
+  (F : \Type  -> \Type) {
   | map {A B : \Type} (A -> B) : (F A) -> F B
   | map-id {A : \Type} (y : F A) : map id y = y
   | map-comp {A B C : \Type} (f : A -> B) (g : B -> C) (y : F A) : map (g o f) y = map g (map f y)
+
+  \func <$ {A B : \Type} (a : A) (fb : F B) : F A =>
+    map (\lam _ => a) fb
+}
