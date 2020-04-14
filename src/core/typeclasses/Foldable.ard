@@ -1,4 +1,3 @@
-\class Foldable
-  {F : \Type -> \Type (\suc \lp)}
-  | foldLeft {A B : \Type} (fa : F A) (b : B) (f : B -> A -> B) : B
-  | foldRight {A B : \Type} (fa : F A) (b : B) (f : A -> B -> B) : B
+\class Foldable (F : \Type -> \Type)
+  | foldLeft {A B : \Type} (F A) (B) (B -> A -> B) : B
+  | foldRight {A B : \Type} (F A) (B) (A -> B -> B) : B

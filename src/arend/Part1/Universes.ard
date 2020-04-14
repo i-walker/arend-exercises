@@ -1,6 +1,7 @@
 \import Data.Bool
 \import core.data.List
 \import core.data.Maybe
+\import core.typeclasses.Functor
 
 -------------------------------------------------
 -- Hierarchies of universes, polymorphism
@@ -44,8 +45,8 @@
 
 \func test9 : \Type \lp => Magma' \lp Nat
 
-\class Functor (F : \Type -> \Type)
-  | fmap {A B : \Type} : (A -> B) -> F A -> F B
+{-\class Functor (F : \Type -> \Type)
+  | fmap {A B : \Type} : (A -> B) -> F A -> F B-}
 
 \func test10 : \Type (\suc \lp) => Functor \lp Maybe
 

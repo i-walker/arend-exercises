@@ -3,6 +3,7 @@
 \import Paths
 \import Set
 \import core.data.List
+\import core.data.Maybe
 \import core.typeclasses.Functor
 
 -- 1. Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
@@ -76,7 +77,15 @@
 \func transpose
   {A : \Type}
   (ll : List (List A))
-  : List (List A) => {?}
+  : List (List A) => headL ll nil
+  \where
+    \func headL {A : \Type} (_ : List (List A)) (_ : List (List A)) : List (List A) \with
+      | nil, xs => xs
+      | :: a l, xs =>
+        \case (List.head a) \with{
+          | nothing => headL l xs
+          | just h => headL l (:: h xs)
+        }
 
 -- List.traverse ll (\lam (x : List A) => List.head x)
 
@@ -85,7 +94,7 @@
 \func test2 :
   transpose
       ((1 :: 2 :: 3 :: nil) :: (4 :: 5 :: 6 :: nil) :: nil) =
-  ((1 :: 4 :: nil) :: (2 :: 5 :: nil) :: (3 :: 6 :: nil) :: nil) =>
+  ((1 :: 4 :: nil) :: nil :: (2 :: 5 :: nil) :: (3 :: 6 :: nil) :: nil) =>
   idp
 
 \func add {R : \Type} (x y : Nat) : (Nat -> R) -> R =>

@@ -1,0 +1,68 @@
+\import core.typeclasses.Applicative
+\import core.typeclasses.Foldable
+\import core.typeclasses.Functor
+\import core.typeclasses.Traverse
+
+\data Compose
+  (F : \Type -> \Type)
+  (G : \Type -> \Type)
+  (A : \Type)
+  | compose (F (G A)) \where {
+  \func getCompose {F : \Type -> \Type}
+                   {G : \Type -> \Type}
+                   {A : \Type}(x : Compose F G A) : F(G A) \with
+    | compose f => f
+}
+
+\instance ApplicativeCompose
+  (F : \Type -> \Type)
+  {AF : Applicative F}
+  (G : \Type -> \Type)
+  {AG : Applicative G}
+: Applicative
+  | F => Compose F G
+  | map => {?}
+  | map-id => {?}
+  | map-comp => {?}
+  | <*> => {?}
+  | just => (\lam a => compose (AF.just(AG.just a)))
+
+\instance FunctorCompose
+  (F : \Type -> \Type)
+  {AF : Functor F}
+  (G : \Type -> \Type)
+  {AG : Functor G}
+: Functor
+  | F => {?}
+  | map => {?}
+  | map-id => {?}
+  | map-comp => {?}
+
+\instance TraverseCompose
+  (F : \Type -> \Type)
+  {AF : Traverse F}
+  (G : \Type -> \Type)
+  {AG : Traverse G}
+: Traverse
+  | F => {?}
+  | map => {?}
+  | map-id => {?}
+  | map-comp => {?}
+  | Foldable.F => {?}
+  | foldLeft => {?}
+  | foldRight => {?}
+  | traverse => {?}
+  | traverse-Id => {?}
+  | traverse-comp => {?}
+
+\instance FoldableCompose
+  (F : \Type -> \Type)
+  {AF : Foldable F}
+  (G : \Type -> \Type)
+  {AG : Foldable G}
+: Foldable
+  | F => {?}
+  | foldLeft => {?}
+  | foldRight => {?}
+
+-- TODO: add Alternative typeclass and its instance F being the Alternative and G Applicative

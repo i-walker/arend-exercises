@@ -1,16 +1,35 @@
+\import core.data.List
 \import Function
 \import core.data.Id
 \import core.typeclasses.Applicative
+\import core.data.Compose
 \import core.typeclasses.Foldable
 \import core.typeclasses.Functor
 
-\class Traverse \extends Functor, Foldable
+\class Traverse \extends Functor, Foldable {
   | traverse {A B : \Type}
-             {G : \Type -> \Type (\suc \lp)}
+             {G : \Type -> \Type}
+             (fa : F A)
              {AG : Applicative G}
-             (fa : F A) (f : A -> G B) : G (F B)
-  | sequence {A B : \Type}
-             {G : \Type -> \Type (\suc \lp)}
-             {AG : Applicative G}
-             (fa : F A) : G (F A)
-   -- | traverseId : traverse fa Id.just = map fa id
+             (f : A -> G B) : G (F B)
+  | traverse-Id {A : \Type}
+                (fa : F A)
+                {AG : Applicative Id}
+  : traverse fa {AG} AG.just = AG.just (map id fa)
+  | traverse-comp {A B C : \Type}
+                  {G : \Type -> \Type}
+                  (fa : F A)
+                  {AG : Applicative G}
+                  (f : A -> G B)
+                  {AGG : Applicative (Compose G G)} -- can be replaced with (\lam x => G (G x))
+                  (g : B -> G C)
+  : AG.map (\lam (x : F B) => traverse x {AG} g) (traverse  fa {AG} f) -- returns: G ( G (F C))
+    = Compose.getCompose (traverse fa {AGG} (\lam (x : A) => compose (AG.map g (f x))))
+  | Functor.F => Foldable.F
+
+  \func sequence {A : \Type}
+                 {G : \Type -> \Type}
+                 {AG : Applicative G}
+                 (fga : F (G A)) : G (F A) =>
+    traverse fga {AG} id
+}

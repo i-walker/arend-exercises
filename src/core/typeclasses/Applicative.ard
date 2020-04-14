@@ -1,5 +1,11 @@
-\import core.typeclasses.Apply
+\import Function
 \import core.typeclasses.Functor
 
-\class Applicative \extends Apply
+\class Applicative \extends Functor {
   | just {A : \Type} A : F A
+  | \infixl 4 <*> {A B : \Type} (fab : F (A -> B)) (fa : F A) : F B
+  | just-id {A : \Type} (a : F A) : just id <*> a = a
+  | just-hom {A B : \Type} (f : A -> B) (a : A) : just f <*> just a = just (f a)
+
+  \func \infixl 4 *> {A B : \Type} (fa : F A) (fb : F B) : F B => (Functor.<$ id fa) <*> fb
+}
