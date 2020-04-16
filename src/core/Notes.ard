@@ -1,0 +1,88 @@
+
+
+-- Defining Data types
+
+-- data type with 3 constructors
+\data T | c1 | c2 | c3
+
+-- data type where constructors have arguments
+\data T2 | c4 Int | c5 Bool | c6 Int Bool
+
+-- data type with at type parameter
+\data T3 \Type | c7 | c8
+
+\func ex_T3 : T3 Int => c7
+
+-- binding the type parameter to a literal to use in construtors
+\data T4 (A : \Type) | c9 | c10 A
+
+\func ex_T4 : T4 Nat => c10 8
+
+
+
+
+
+
+
+
+-- Defining functions
+
+-- All functions in Arend must be total and terminate.
+
+-- constant functions or values
+\func ex_val : Int => 7
+
+-- function with explicit parameters
+\func ex_fun (a : Int) : Int => a
+
+-- function with an implicit type parameter and an explicit value parameter
+\func id {A : \Type} (a : A) : A => a
+\func ex_id : Int => id 8
+
+-- function defined with pattern matching
+\func not (b : Bool) : Bool
+  | true => false
+  | false => true
+
+-- equivalently
+\func not' (b : Bool) : Bool \elim b
+  | true => false
+  | false => true
+
+
+-- chosing the argument to pattern match on
+\func if {A : \Type} (b : Bool) (t e : A) : A \elim b
+  | true => t
+  | false => e
+
+-- lambdas
+\func ex_lambda {A : \Type} : A -> Int => \lam (a : A) => 7
+
+
+
+-- Defining a typeclass (haskell style typeclasses)
+
+
+\class Lucky (A : \Type ) {
+  | lucky : A -> Int
+}
+
+-- Defining an instance
+\data Dice | roll
+
+\instance Lucky-Dice : Lucky Dice
+  | lucky => \lam (d : Dice) => \case d \with {
+    | roll => 9
+  }
+
+
+
+
+-- Equality Type
+
+\func reflexivity {A : \Type} (a : A) : a = a => idp
+
+\func simple_fact : 2 = 2 => reflexivity 2
+
+\func simple_math : (2 Nat.+ 2) = 4 => reflexivity 4
+
