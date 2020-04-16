@@ -64,25 +64,78 @@
 
 
 \class Lucky (A : \Type ) {
-  | lucky : A -> Int
+  | roll : A -> Int
 }
 
 -- Defining an instance
-\data Dice | roll
+\data Dice | die
 
 \instance Lucky-Dice : Lucky Dice
-  | lucky => \lam (d : Dice) => \case d \with {
-    | roll => 9
-  }
+  | roll => \lam _ => 5
+
 
 
 
 
 -- Equality Type
 
+{-
+  Equality is a complex topic in Arend, but we will keep it simple here.
+
+  For some type A and a : A, there is a type a = a
+
+  This is an example of a dependent type. There is a value in the Type.
+  ex)
+    Bool has two terms: True, False.
+
+    So there are 2 types,
+      True = True
+      and
+      False = False
+
+  How do you construct a term of this type?
+
+  There is a built in term `idp`.
+
+  ex)
+ -}
+
+\func true_eq_true : true = true => idp
+\func false_eq_fasle : false = false => idp
+
+-- idp represents the reflexive property of equality, for all a : A, a is always equal to itself.
+-- you could call if `reflexivity` or `refl` for short if you like
+
 \func reflexivity {A : \Type} (a : A) : a = a => idp
 
 \func simple_fact : 2 = 2 => reflexivity 2
 
-\func simple_math : (2 Nat.+ 2) = 4 => reflexivity 4
 
+-- idp can also relate two equal terms that are equivalent by computation (definitional equality)
+-- for example,  not (true) reduces to false
+-- so we can use `idp` to equate not (true) and false
+
+\func not_true_eq_false : not true = false => idp
+
+-- another classic example using addition
+-- 2 + 2 reduces to 4 by computaiton, so we can equate 2 + 2 and 4
+
+\func simple_math : (2 Nat.+ 2) = 4 => idp
+
+
+{- with that, we can enhance our lucky typclass to be more specific!
+   the implementation of the roll function must result in 7 every time
+ -}
+
+\class Lucky' (A : \Type)
+  -- a roll function maps all constructors of A to an integer
+  | roll : A -> Int
+  -- all rolls must result in 7! how lucky!
+  | lucky_roll (a : A) : roll a = 7
+
+
+\instance Lucky-Dice' : Lucky' Dice
+  -- here we define the roll function to be a constant lambda, 7
+  | roll => \lam _ => 7
+  -- and we prove that all rolls result in 7 using `idp`
+  | lucky_roll (d : Dice) => idp
