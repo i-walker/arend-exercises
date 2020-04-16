@@ -1,5 +1,10 @@
 \import Function
 
+\func \infixr 8 o {A B C : \Type} (g : B -> C) (f : A -> B) => \lam x => g (f x)
+
+\func id {A : \Type} => \lam (x : A) => x
+
+
 \class Functor
   (F : \Type  -> \Type) {
   | map {A B : \Type} (A -> B) : (F A) -> F B

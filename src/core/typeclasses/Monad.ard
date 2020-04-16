@@ -1,0 +1,11 @@
+\import core.data.Maybe (pure)
+\import core.typeclasses.Applicative
+
+\class Monad \extends Applicative {
+  | pure {A : \Type } A : F A
+  | flatMap {A B : \Type} (f : A -> F B) (fa : F A) : F B
+  -- laws
+  | fp {A B : \Type} (f : A -> F B) (a : A) : flatMap f (pure a) = f a
+  | fp2 {A B : \Type} (f : A -> F B) (a : F A) : flatMap pure a = a
+  | fp3 {A B C : \Type} (f : A -> F B) (g : B -> F C) (a : F A) : flatMap g (flatMap f a) = flatMap (\lam a => flatMap g (f a)) a
+}

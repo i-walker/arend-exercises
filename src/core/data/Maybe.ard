@@ -1,1 +1,76 @@
-\data Maybe (A : \Type) | nothing | just A
+
+\import core.typeclasses.Functor
+
+\func pmap {A B : \Type} (f : A -> B) {a a' : A} (p : a = a') : f a = f a' =>
+  path(\lam i => f (p @ i))
+
+\func id {A : \Type} (a : A) : A => a
+
+
+\class Applicative \extends Functor {
+  | pure {A : \Type} A : F A
+  | \infixl 4 <*> {A B : \Type} (fab : F (A -> B)) (fa : F A) : F B
+  -- laws
+  | pure-id {A : \Type} (a : F A) : pure id <*> a = a
+  | pure-hom {A B : \Type} (f : A -> B) (a : A) : pure f <*> pure a = pure (f a)
+}
+
+
+
+\data Maybe (A : \Type) | None | Some A \where  {
+
+  \func map {A B : \Type } (f : A -> B) (o : Maybe A) : Maybe B \elim o
+    | None => None
+    | Some a => Some (f a)
+
+  \func map-id {A : \Type} (o : Maybe A) : map id o = o \elim o
+    | None => idp
+    | Some a => idp
+
+  \func map-comp {A B C :\Type} (f : A -> B) (g : B -> C) (o : Maybe A) : map (\lam a => g (f a)) o = map g (map f o) \elim o
+    | None => idp
+    | Some a => idp
+
+  \instance Maybe-Functor : Functor Maybe
+    | map => Maybe.map
+    | map-id => Maybe.map-id
+    | map-comp => Maybe.map-comp
+
+  -- applicative
+
+  \func pure {A : \Type} (a : A) : Maybe A => Some a
+
+  \func \infixl 4 <*> {A B : \Type} (fab : Maybe (A -> B)) (fa : Maybe A) : Maybe B \elim fab
+    | None => None
+    | Some f => map f fa
+
+  -- laws
+
+  \func pure-id {A : \Type} (a : Maybe A) : pure id <*> a = a \elim a
+    | None => idp
+    | Some a => idp
+
+
+  \func pure-hom {A B : \Type} (f : A -> B) (a : A) : pure f <*> pure a = pure (f a) => idp
+
+  \instance Maybe-Applicative : Applicative Maybe
+    | map => Maybe.map
+    | map-id => Maybe.map-id
+    | map-comp => Maybe.map-comp
+    --
+    | pure => Maybe.pure
+    | <*> => Maybe.<*>
+    | pure-id => Maybe.pure-id
+    | pure-hom => Maybe.pure-hom
+
+
+  -- Monad
+
+  \func flatMap {A B : \Type} (f : A -> Maybe B) (fa : Maybe A) : Maybe B \elim fa
+    | None => None
+    | Some a => f a
+
+
+
+}
+
