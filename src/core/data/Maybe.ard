@@ -1,5 +1,6 @@
 
 \import core.typeclasses.Functor
+\import core.typeclasses.Monad
 
 \func pmap {A B : \Type} (f : A -> B) {a a' : A} (p : a = a') : f a = f a' =>
   path(\lam i => f (p @ i))
@@ -69,6 +70,34 @@
   \func flatMap {A B : \Type} (f : A -> Maybe B) (fa : Maybe A) : Maybe B \elim fa
     | None => None
     | Some a => f a
+
+  -- laws
+
+  \func right-unit {A B : \Type} (f : A -> Maybe B) (a : A) : flatMap f (pure a) = f a => idp
+
+  \func left-unit {A B : \Type} (f : A -> Maybe B) (ma : Maybe A) : flatMap pure ma = ma \elim  ma
+    | None => idp
+    | Some a => idp
+
+  \func m-assoc {A B C : \Type} (f : A -> Maybe B) (g : B -> Maybe C) (a : Maybe A) : flatMap g (flatMap f a) = flatMap (\lam a => flatMap g (f a)) a \elim a
+    | None => idp
+    | Some a => idp
+
+  \instance Maybe-Monad : Monad Maybe
+    | map => Maybe.map
+    | map-id => Maybe.map-id
+    | map-comp => Maybe.map-comp
+    -- App
+    | just => Maybe.pure
+    | <*> => Maybe.<*>
+    | just-id => Maybe.pure-id
+    | just-hom => Maybe.pure-hom
+    -- monad
+    | pure => Maybe.pure
+    | flatMap => Maybe.flatMap
+    | right-unit => Maybe.right-unit
+    | left-unit => Maybe.left-unit
+    | m-assoc => Maybe.m-assoc
 
 
 
